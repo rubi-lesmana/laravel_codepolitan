@@ -15,10 +15,16 @@ class TugasController extends Controller
     public function index(Request $request)
     {
         if($request->search){
-            $tugas = Tugas::where('tugas', 'LIKE', '%$request->search%')
+            $tugas = DB::table('tugas')
+                ->where('tugas', 'LIKE', '%$request->search%')
                 ->get();
             return $tugas;
         }
+        // if($request->search){
+        //     $tugas = Tugas::where('tugas', 'LIKE', '%$request->search%')
+        //         ->get();
+        //     return $tugas;
+        // }
         //$tugas = DB::table('tugas')->get();
 
         $tugas = Tugas::all();
